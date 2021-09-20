@@ -2,15 +2,18 @@ const { SlashCommandBuilder } = require("@discordjs/builders")
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("gif")
-    .setDescription("Sends a random gif!")
+    .setName("echo")
+    .setDescription("Replies with your input!")
     .addStringOption((option) =>
       option
-        .setName("category")
-        .setDescription("The gif category")
+        .setName("input")
+        .setDescription("The input to echo back")
         .setRequired(true)
-        .addChoice("Funny", "gif_funny")
-        .addChoice("Meme", "gif_meme")
-        .addChoice("Movie", "gif_movie")
     ),
+  async execute(interaction) {
+    await interaction.reply({
+      content: interaction.options.getString("input"),
+      ephemeral: false,
+    })
+  },
 }
