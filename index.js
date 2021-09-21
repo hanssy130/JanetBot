@@ -4,7 +4,7 @@
 
 const fs = require("fs")
 const { Client, Collection, Intents } = require("discord.js")
-const { token } = process.env.token || require("./config.json")
+const { token } = process.env.DJS_TOKEN || require("./config.json")
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] })
 
