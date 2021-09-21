@@ -4,7 +4,11 @@
 
 const fs = require("fs")
 const { Client, Collection, Intents } = require("discord.js")
-const { token } = process.env.DJS_TOKEN || require("./config.json")
+try {
+  var { token } = require("./config.json")
+} catch (error) {
+  var token = process.env.token
+}
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] })
 
