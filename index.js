@@ -47,8 +47,4 @@ client.on("interactionCreate", async (interaction) => {
 })
 
 console.log(token)
-try {
-  await client.login(token)
-} catch (error) {
-  console.error(error)
-}
+client.login(token)
