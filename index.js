@@ -42,4 +42,8 @@ client.on("interactionCreate", async (interaction) => {
   }
 })
 
-client.login(token)
+if (token) {
+  client.login(token)
+} else {
+  client.login(process.env.token)
+}

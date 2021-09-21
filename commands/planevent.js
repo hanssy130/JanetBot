@@ -27,7 +27,7 @@ module.exports = {
         .setRequired(true)
         .addChoice("Food", "food")
         .addChoice("Activity", "activity")
-        .addChoice("Chill", "chill")
+        .addChoice("Other", "other")
     )
     .addStringOption((option) =>
       option
@@ -36,14 +36,24 @@ module.exports = {
     ),
   async execute(interaction) {
     const exampleEmbed = new MessageEmbed()
-      .setTitle(
-        interaction.options.getString("what") +
-          " @ " +
-          interaction.options.getString("where") +
-          " - " +
-          interaction.options.getString("when")
-      )
+      .setTitle(interaction.options.getString("what"))
       .setThumbnail("https://i.imgur.com/AfFp7pu.png")
+      .setURL(
+        "https://www.google.com/calendar/render?action=TEMPLATE&text=" +
+          interaction.options.getString("what").split(" ").join("+")
+      )
+      .addFields(
+        {
+          name: "Where",
+          value: interaction.options.getString("where"),
+          inline: true,
+        },
+        {
+          name: "When",
+          value: interaction.options.getString("when"),
+          inline: true,
+        }
+      )
       .setFooter(
         "Powered by Janet",
         "https://pbs.twimg.com/profile_images/1091599174217347077/TnoGbH9h_400x400.jpg"
@@ -72,7 +82,16 @@ module.exports = {
       exampleEmbed.setThumbnail("https://i.imgur.com/EyBkosg.jpg")
     }
 
-    const message = await interaction.reply({ embeds: [exampleEmbed] })
-    // await message.react("😄")
+    const message = await interaction.reply({
+      embeds: [exampleEmbed],
+      fetchReply: true,
+    })
+    try {
+      await message.react("✅")
+      await message.react("❌")
+      await message.react("🤔")
+    } catch (error) {
+      console.error("oopsies:", error)
+    }
   },
 }
