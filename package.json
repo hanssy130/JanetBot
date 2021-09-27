@@ -1,12 +1,11 @@
 {
   "name": "janetbot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "commands" : "node deploy-commands.js"
+    "commands": "node deploy-commands.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +17,14 @@
   },
   "engines": {
     "node": "16.x"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanssy130/JanetBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hanssy130/JanetBot/issues"
+  },
+  "homepage": "https://github.com/hanssy130/JanetBot#readme",
+  "description": ""
 }
