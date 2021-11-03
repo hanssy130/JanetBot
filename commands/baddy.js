@@ -37,7 +37,6 @@ module.exports = {
     try {
       await message.react("✅")
       await message.react("❌")
-      await message.react("🤔")
     } catch (error) {
       console.error("oopsies:", error)
     }
