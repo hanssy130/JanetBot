@@ -28,6 +28,13 @@ client.once("ready", () => {
   console.log("Ready!")
 })
 
+// TODO: Figure out why it's not updating
+// client.on("messageCreate", (message) => {
+//   if (message.author.bot) return false
+
+//   console.log(`Message from ${message.author.username}: ${message.content}`)
+// })
+
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return
 
@@ -46,5 +53,4 @@ client.on("interactionCreate", async (interaction) => {
   }
 })
 
-console.log(token)
 client.login(token)
